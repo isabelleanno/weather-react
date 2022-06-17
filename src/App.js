@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import "./App.css";
+import "./Search.js";
+import Search from "./Search.js";
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Fake Weather Search Engine- Deployed on GitHub </h1>
+      <h3>SheCodes Week 4 Homework</h3>
+      <Search />
+
+      <div className="small">
+        <small>
+          Made by Isabelle Anno. For educational uses only. This weather data is
+          fake & randomized.
+        </small>
+      </div>
     </div>
   );
 }
-
-export default App;

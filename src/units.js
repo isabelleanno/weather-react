@@ -1,13 +1,12 @@
 //This component deals with the units- fahrenheit and celsius.
 
-import { toBeEmptyDOMElement } from "@testing-library/jest-dom/dist/matchers";
-import React, { useState, UseState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 
 export default function Units(props) {
   //Defining states
-  console.log(props.temperature);
-  const [tempUnit, setTempUnit] = useState("°C");
+
+  let [tempUnit, setTempUnit] = useState("°C");
   let [tempNumber, setTempNumber] = useState(props.temperature);
 
   //changeUnit converts to fahrenheit

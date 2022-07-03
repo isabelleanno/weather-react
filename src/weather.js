@@ -20,7 +20,6 @@ infinite loop calls. */
 
   const apiKey = "b1c0b3d5980e9959f8a6f58024cf437d";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-  let reloadComponent = false;
 
   function UpdateSearch(event) {
     updateCity(event.target.value);

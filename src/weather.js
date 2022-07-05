@@ -33,7 +33,6 @@ infinite loop calls. */
 
   //This function gets called in the "then" statement after axios gets the APIURL. See the bottom of this page for the AJAX call.
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
@@ -46,8 +45,8 @@ infinite loop calls. */
       feelsLike: Math.round(response.data.main.feels_like),
       date: new Date(response.data.dt * 1000),
       name: response.data.name,
+      coord: response.data.coord,
     });
-    console.log(weatherData.temperature);
     //Sets the "isReady" state to true so that the component will load.
     setReady(true);
   }
@@ -111,7 +110,7 @@ infinite loop calls. */
                   <p className="d-inline">{weatherData.wind} km/h</p>
                 </div>
               </div>
-              <WeatherForecast />
+              <WeatherForecast coords={weatherData.coord} />
             </div>
           </div>
           <div className="small">

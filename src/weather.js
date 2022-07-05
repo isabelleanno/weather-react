@@ -7,6 +7,7 @@ import axios from "axios";
 import Getdate from "./Date.js";
 import Units from "./units.js";
 import Icons from "./icons.js";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather() {
   /*I use states here- the first is for conditional rendering- it will only load the site after the ajax call was made.
@@ -14,7 +15,7 @@ export default function Weather() {
  */
   let [isReady, setReady] = useState(false);
   let [weatherData, setWeatherData] = useState({});
-  let [city, updateCity] = useState("London");
+  let [city, updateCity] = useState("Amsterdam");
   /* Defining the APIUrl- AJAX call is made at the bottom of this code in the "else" statement in order to prevent
 infinite loop calls. */
 
@@ -57,7 +58,7 @@ infinite loop calls. */
   if (isReady) {
     return (
       <div className="container d-flex align-items-center justify-content-center">
-        <div className="direction-row">
+        <div>
           <div className="mt-5 p-5 border">
             <div className="row mb-4 ">
               <div className="col-5">
@@ -110,6 +111,7 @@ infinite loop calls. */
                   <p className="d-inline">{weatherData.wind} km/h</p>
                 </div>
               </div>
+              <WeatherForecast />
             </div>
           </div>
           <div className="small">
@@ -119,7 +121,8 @@ infinite loop calls. */
                 Isabelle Anno
               </a>
               . Check out my{" "}
-              <a href="https://github.com/isabelleanno">GitHub</a>!
+              <a href="https://github.com/isabelleanno/weather-react">GitHub</a>
+              !
             </small>
           </div>
         </div>

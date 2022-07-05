@@ -7,28 +7,25 @@ export default function Units(props) {
   //Defining states
 
   let [tempUnit, setTempUnit] = useState("°C");
-  let [tempNumber, setTempNumber] = useState(props.temperature);
 
   //changeUnit converts to fahrenheit
   function changeUnit(event) {
     event.preventDefault();
     if (event.target.innerHTML === "°C") {
       setTempUnit("°F");
-      setTempNumber(Math.round(tempNumber * 1.8 + 32));
     } else {
-      changeBack();
+      setTempUnit("°C");
     }
-  }
-
-  //changeBack converts back into celsius
-  function changeBack() {
-    setTempUnit("°C");
-    setTempNumber(props.temperature);
   }
 
   return (
     <span>
-      <h1 className="d-inline text-primary">{tempNumber}</h1>
+      <h1 className="d-inline text-primary">
+        {" "}
+        {tempUnit === "°C"
+          ? props.temperature
+          : Math.round(props.temperature * 1.8 + 32)}
+      </h1>
       <p className="d-inline">
         <button className="weather-button" onClick={changeUnit}>
           {tempUnit}

@@ -1,106 +1,91 @@
-//I know this is ugly code right now, I will fix it later. ;)
-
 import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudBolt } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function icons(props) {
-  const element = (
-    <FontAwesomeIcon icon={faCloudBolt} className="font-awesome" />
-  );
-  const LIGHTGRAY = "rgb(161, 173, 194)";
-  const RAINGRAY = "rgb(110, 131, 168)";
-  const SUNSHINE = "rgb(230, 187, 67)";
-  const MOON = "rgb(17, 4, 156)";
+  //Part 1: The icons for the CURRENT weather.
+  if (!props.forecast) {
+    //Using icons from ReactAnimatedWeather instead of weather API. Making mapping objects to connect the icon ID from the API to the icon type
+    //in ReactAnimatedWeather.
+    const iconMapping = {
+      "01d": "CLEAR_DAY",
+      "01n": "CLEAR_NIGHT",
+      "02d": "PARTLY_CLOUDY_DAY",
+      "02n": "PARTLY_CLOUDY_NIGHT",
+      "03d": "CLOUDY",
+      "03n": "CLOUDY",
+      "04d": "CLOUDY",
+      "04n": "CLOUDY",
+      "09d": "SLEET",
+      "09n": "SLEET",
+      "10d": "RAIN",
+      "10n": "RAIN",
+      "11d": "RAIN",
+      "11n": "RAIN",
+      "13d": "SNOW",
+      "13n": "SNOW",
+      "50d": "FOG",
+      "50n": "FOG",
+    };
+    //Making different colors for different icons
+    const colors = {
+      SUNSHINE: "rgb(230, 187, 67)",
+      LIGHTGRAY: "rgb(161, 173, 194)",
+      RAINGRAY: "rgb(110, 131, 168)",
+      MOON: "rgb(17, 4, 156)",
+      BLUEGRAY: "rgb(76, 96, 127)",
+    };
+    const ColorMapping = {
+      "01d": `${colors.SUNSHINE}`,
+      "01n": `${colors.MOON}`,
+      "02d": `${colors.SUNSHINE}`,
+      "02n": `${colors.MOON}`,
+      "03d": `${colors.LIGHTGRAY}`,
+      "03n": `${colors.LIGHTGRAY}`,
+      "04d": `${colors.LIGHTGRAY}`,
+      "04n": `${colors.LIGHTGRAY}`,
+      "09d": `${colors.BLUEGRAY}`,
+      "09n": `${colors.BLUEGRAY}`,
+      "10d": `${colors.RAINGRAY}`,
+      "10n": `${colors.RAINGRAY}`,
+      "11d": `${colors.RAINGRAY}`,
+      "11n": `${colors.RAINGRAY}`,
+      "13d": `${colors.LIGHTGRAY}`,
+      "13n": `${colors.LIGHTGRAY}`,
+      "50d": `${colors.RAINGRAY}`,
+      "50n": `${colors.RAINGRAY}`,
+    };
 
-  const icon = props.icon;
-  const main = props.main;
-
-  if (main === "Thunderstorm") {
-    return element;
-  } else if (main === "Drizzle") {
     return (
       <ReactAnimatedWeather
-        icon={"SLEET"}
-        color={"BLUEGRAY"}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (main === "Rain") {
-    return (
-      <ReactAnimatedWeather
-        icon={"RAIN"}
-        color={RAINGRAY}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (main === "Snow") {
-    return (
-      <ReactAnimatedWeather
-        icon={"SNOW"}
-        color={LIGHTGRAY}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (icon === "50d") {
-    return (
-      <ReactAnimatedWeather
-        icon={"FOG"}
-        color={RAINGRAY}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (icon === "01d") {
-    return (
-      <ReactAnimatedWeather
-        icon={"CLEAR_DAY"}
-        color={SUNSHINE}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (icon === "01n") {
-    return (
-      <ReactAnimatedWeather
-        icon={"CLEAR_NIGHT"}
-        color={MOON}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (icon === "04d") {
-    return (
-      <ReactAnimatedWeather
-        icon={"PARTLY_CLOUDY_DAY"}
-        color={SUNSHINE}
-        size={75}
-        animate={true}
-      />
-    );
-  } else if (icon === "04n") {
-    return (
-      <ReactAnimatedWeather
-        icon={"PARTLY_CLOUDY_NIGHT"}
-        color={MOON}
-        size={75}
+        icon={iconMapping[props.icon]}
+        color={ColorMapping[props.icon]}
+        size={props.size}
         animate={true}
       />
     );
   } else {
-    return (
-      <ReactAnimatedWeather
-        className="colorTest"
-        icon={"CLOUDY"}
-        color={LIGHTGRAY}
-        size={75}
-        animate={true}
-      />
-    );
+    const forecastIconMapping = {
+      "01d": "☀️",
+      "01n": "🌙",
+      "02d": "⛅",
+      "02n": "⛅",
+      "03d": "☁️",
+      "03n": "☁️",
+      "04d": "☁️",
+      "04n": "☁️",
+      "09d": "🌦️",
+      "09n": "🌦️",
+      "10d": "🌧️",
+      "10n": "🌧️",
+      "11d": "⛈️",
+      "11n": "⛈️",
+      "13d": "🌨️",
+      "13n": "🌨️",
+      "50d": "🌫️",
+      "50n": "🌫️",
+    };
+    return <p>{forecastIconMapping[props.icon]}</p>;
   }
 }

@@ -15,7 +15,7 @@ export default function Weather() {
  */
   let [isReady, setReady] = useState(false);
   let [weatherData, setWeatherData] = useState({});
-  let [city, updateCity] = useState("Amsterdam");
+  let [city, updateCity] = useState("Cincinnati");
   /* Defining the APIUrl- AJAX call is made at the bottom of this code in the "else" statement in order to prevent
 infinite loop calls. */
 
@@ -92,7 +92,7 @@ infinite loop calls. */
                 <p className="m-0">{weatherData.description}</p>
               </div>
               <div className="col-4">
-                <Icons main={weatherData.main} icon={weatherData.icon} />
+                <Icons icon={weatherData.icon} size={85} forecast={false} />
               </div>
               <div className="col-4">
                 <div className="m-0">
@@ -110,7 +110,13 @@ infinite loop calls. */
                   <p className="d-inline">{weatherData.wind} km/h</p>
                 </div>
               </div>
-              <WeatherForecast coords={weatherData.coord} />
+              <div className="row">
+                <WeatherForecast coords={weatherData.coord} fcday={1} />
+                <WeatherForecast coords={weatherData.coord} fcday={2} />
+                <WeatherForecast coords={weatherData.coord} fcday={3} />
+                <WeatherForecast coords={weatherData.coord} fcday={4} />
+                <WeatherForecast coords={weatherData.coord} fcday={5} />
+              </div>
             </div>
           </div>
           <div className="small">

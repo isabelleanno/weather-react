@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Day(props) {
   //Creating day and month arrays
-  console.log(props);
+
   let daysArray = [
     "Sunday",
     "Monday",

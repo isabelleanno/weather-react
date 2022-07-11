@@ -1,7 +1,6 @@
 import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function icons(props) {
   //Part 1: The icons for the CURRENT weather.

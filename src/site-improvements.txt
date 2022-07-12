@@ -1,3 +1,2 @@
--Convert the feelsLike, high and low to F and C when button is clicked
+-Not covered in SheCodes- learn about global state management in react to make the units change in the forecast, too!
 -Make responsive
--Fix icons

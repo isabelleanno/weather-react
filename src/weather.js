@@ -15,7 +15,7 @@ export default function Weather() {
  */
   let [isReady, setReady] = useState(false);
   let [weatherData, setWeatherData] = useState({});
-  let [city, updateCity] = useState("Cincinnati");
+  let [city, updateCity] = useState("Amsterdam");
   /* Defining the APIUrl- AJAX call is made at the bottom of this code in the "else" statement in order to prevent
 infinite loop calls. */
 
